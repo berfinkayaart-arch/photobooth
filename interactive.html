@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Photobooth</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="interactive-modal.css">
+
+  <!-- ML Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="interactive-modal-wrapper">
+
+      <!-- ==============================================
+           SCREEN 1: Live Capture & Effects 
+           ============================================== -->
+      <div id="screen-1" class="screen-container active-screen">
+          
+          <!-- Back Button (Absolute positioned outside main flow or top right) -->
+          <button onclick="window.parent.postMessage('closeInteractiveModal', '*');" class="action-btn secondary-btn" style="position: absolute; top: 2%; right: 2%; z-index: 50;">🔙 Ana Kabine Dön</button>
+
+          <!-- Left Column (Effects) -->
+          <div id="s1-left-panel">
+              <h3 style="text-align: center; margin-bottom: 1vw; font-weight: 600; font-size: 1.2vw;">EFEKTLER</h3>
+              
+              <div class="control-section">
+                  <label>Buharlanma Modu</label>
+                  <label class="switch">
+                      <input type="checkbox" id="steam-toggle">
+                      <span class="slider round"></span>
+                  </label>
+              </div>
+
+              <div class="control-section">
+                  <label>Kaydırarak Filtre Değiştir</label>
+                  <label class="switch">
+                      <input type="checkbox" id="swipe-filter-toggle">
+                      <span class="slider round"></span>
+                  </label>
+              </div>
+
+              <div class="control-section">
+                  <label>Avuç İçi Otomatik Çekim</label>
+                  <label class="switch">
+                      <input type="checkbox" id="palm-capture-toggle">
+                      <span class="slider round"></span>
+                  </label>
+              </div>
+
+              <div class="control-section">
+                  <label>Neon Çizim Efekti</label>
+                  <label class="switch" style="margin-bottom: 0.5vw;">
+                      <input type="checkbox" id="neon-trail-toggle">
+                      <span class="slider round"></span>
+                  </label>
+                  <input type="color" id="neon-color-picker" value="#00ffff" style="width:100%; border:none; height:2vw; cursor:pointer;" title="Neon Rengi">
+              </div>
+
+              <div class="control-section">
+                  <label>Yüz & El AR Efektleri</label>
+                  <label class="switch" style="margin-bottom: 0.5vw;">
+                      <input type="checkbox" id="ar-effects-toggle">
+                      <span class="slider round"></span>
+                  </label>
+                  <select id="ar-shape-picker" style="width:100%; padding: 0.5vw; font-size: 0.9vw;">
+                      <option value="star">Yıldız (⭐)</option>
+                      <option value="heart">Kalp (❤️)</option>
+                      <option value="circle">Nokta (🔴)</option>
+                  </select>
+              </div>
+
+              <div class="control-section" style="margin-bottom: 1vw;">
+                <label>Manuel Filtre</label>
+                <select id="select-filter" style="width: 100%; padding: 0.5vw; border-radius: 0.3vw; border: 1px solid #ccc; font-family: inherit; font-size: 0.9vw;">
+                   <option value="none">Normal</option>
+                   <option value="vintage-bw">Vintage B&W</option>
+                   <option value="sepia-warm">Warm Sepia</option>
+                   <option value="retro-fade">Retro Fade</option>
+                   <option value="cool-film">Cool Film</option>
+                   <option value="dramatic">Dramatic Contrast</option>
+                   <option value="soft-glow">Soft Glow</option>
+                </select>
+              </div>
+              
+              <button id="btn-clear-drawings" class="action-btn secondary-btn" style="width: 100%;">Çizimleri Temizle</button>
+          </div>
+
+          <!-- Center Column (Camera) -->
+          <div id="s1-center-panel">
+              <div id="camera-wrapper">
+                  <video id="interactive-camera" autoplay playsinline></video>
+                  <canvas id="interactive-ar-canvas" class="overlay-canvas"></canvas>
+                  <canvas id="interactive-neon-canvas" class="overlay-canvas"></canvas>
+                  <canvas id="interactive-sticker-canvas" class="overlay-canvas"></canvas>
+                  <canvas id="interactive-steam-canvas" class="overlay-canvas" style="display: none;"></canvas>
+                  
+                  <!-- Countdown Overlay -->
+                  <div id="interactive-countdown" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 6vw; font-weight: bold; text-shadow: 0 0 2vw rgba(0,0,0,0.8); z-index: 10;">3</div>
+              </div>
+              <button id="btn-snap" class="action-btn" style="align-self: center;">FOTOĞRAF ÇEK</button>
+          </div>
+
+          <!-- Right Column (Memes) -->
+          <div id="s1-right-panel">
+              <h3 style="text-align: center; margin-bottom: 1vw; font-weight: 600; font-size: 1.2vw;">Meme</h3>
+              <div class="sticker-grid" id="meme-selection-grid" style="grid-template-columns: repeat(2, 1fr); gap: 1vw; overflow-y: auto; max-height: 90%;">
+                  <!-- Memes -->
+                  <img src="meme/mm.jpeg" class="meme-item" onerror="this.style.display='none'">
+                  <img src="meme/mm1.jpeg" class="meme-item" onerror="this.style.display='none'">
+                  <img src="meme/mm2.jpeg" class="meme-item" onerror="this.style.display='none'">
+                  <img src="meme/mm3.jpeg" class="meme-item" onerror="this.style.display='none'">
+                  <img src="meme/mm4.jpeg" class="meme-item" onerror="this.style.display='none'">
+                  <img src="meme/mm5.jpeg" class="meme-item" onerror="this.style.display='none'">
+                  <img src="meme/mm6.jpeg" class="meme-item" onerror="this.style.display='none'">
+                  <img src="meme/mm7.jpeg" class="meme-item" onerror="this.style.display='none'">
+                  <img src="meme/mm8.jpeg" class="meme-item" onerror="this.style.display='none'">
+                  <img src="meme/mm9.jpeg" class="meme-item" onerror="this.style.display='none'">
+              </div>
+          </div>
+      </div>
+
+
+      <!-- ==============================================
+           SCREEN 2: Photo Decoration / Composition
+           ============================================== -->
+      <div id="screen-2" class="screen-container">
+          
+          <!-- Left Area (Captured Photo Preview) -->
+          <div id="s2-left-panel">
+              <canvas id="photo-preview-canvas"></canvas>
+              <div class="action-buttons-row" style="display:flex; justify-content:center; gap: 1vw;">
+                  <button id="btn-retake" class="action-btn secondary-btn">TEKRAR ÇEK</button>
+                  <button id="btn-save-interactive" class="action-btn">FOTOĞRAFI ONAYLA</button>
+              </div>
+          </div>
+
+          <!-- Right Area (Decorations) -->
+          <div id="s2-right-panel">
+              <h3 style="margin-bottom:1vw; font-weight:500; font-size: 1.2vw;">Şablon Seç (Tekli)</h3>
+              <div class="template-grid" id="template-selection-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5vw; margin-bottom: 2vw; max-height: 15vw; overflow-y: auto;">
+                  <!-- Templates dynamically loaded -->
+              </div>
+
+              <h3 style="margin-bottom:1vw; font-weight:500; font-size: 1.2vw;">Stickers</h3>
+              <div class="sticker-grid">
+                  <div class="sticker-item">⭐</div>
+                  <div class="sticker-item">❤️</div>
+                  <div class="sticker-item">🔥</div>
+                  <div class="sticker-item">✨</div>
+              </div>
+              
+              <h3 style="margin: 2vw 0 1vw; font-weight:500; font-size: 1.2vw;">Metin Ekle</h3>
+              <input type="text" id="text-overlay-input" placeholder="Yazı ekle...">
+          </div>
+      </div>
+  </div>
+
+  <script src="interactive.js"></script>
+</body>
+</html>

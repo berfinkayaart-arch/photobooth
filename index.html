@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vintage Photobooth</title>
+  <link rel="stylesheet" href="style.css?v=18">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+<body class="idle-mode">
+
+  <!-- AŞAMA 1.5: VİDEO GEÇİŞ EKRANI -->
+  <div id="video-intro-container" class="fullscreen-bg" style="display: none; background: black; z-index: 2000; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;">
+      <video id="intro-video" playsinline style="width: 100%; height: 100%; object-fit: cover;">
+          <!-- Foto.mp4 kök dizinde (assets içinde değil) -->
+          <source src="foto.mp4" type="video/mp4">
+      </video>
+  </div>
+
+  <!-- AŞAMA 1: İLK AÇILIŞ - BOŞ KABİN (Idle View) -->
+  <div id="idle-screen-trigger" class="fullscreen-bg">
+    <!-- Kabin perdesinin üzerine denk gelen görünmez tıklama alanı -->
+    <div id="curtain-click-zone"></div>
+  </div>
+
+  <!-- AŞAMA 2: İNTERAKTİF EKRAN OVERLAY -->
+  <div id="interactive-screen" class="fullscreen-bg" style="display: none;">
+    
+    <!-- SOL TARAFTAKİ KONTROL PANELİ (Sidebar) -->
+    <div class="photobooth-panel">
+      <h2>Photobooth</h2>
+      
+      <!-- Bilgi Button -->
+      <div class="control-section" style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+          <button id="btn-info" class="action-btn" style="width: 100%;">BİLGİ</button>
+      </div>
+
+      <div class="control-section">
+        <label>Select Template</label>
+        <div id="template-thumbnails-grid">
+          <!-- Şablon preview görselleri dinamik olarak buraya eklenecek -->
+        </div>
+      </div>
+      
+      <div class="control-section">
+        <label>Filter</label>
+        <select id="select-filter">
+           <option value="none">Normal</option>
+           <option value="vintage-bw">Vintage B&W</option>
+           <option value="sepia-warm">Warm Sepia</option>
+           <option value="retro-fade">Retro Fade</option>
+           <option value="cool-film">Cool Film</option>
+           <option value="dramatic">Dramatic Contrast</option>
+           <option value="soft-glow">Soft Glow</option>
+        </select>
+      </div>
+
+      <button id="btn-take-photo">TAKE PHOTO</button>
+      <button id="btn-pose-inspiration">POSE INSPIRATION</button>
+      <button id="btn-open-interactive" style="width: 100%; margin-top: 10px; background-color: #8fa071; color: white; padding: 10px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">MİNİ OYUNLAR (İNTERAKTİF)</button>
+    </div>
+
+    <div id="center-column" style="display: flex; flex-direction: column; align-items: center; gap: 20px; z-index: 50;">
+    <!-- MERKEZDEKİ BÜYÜK KARE KUTU (Canlı Kamera Alanı) -->
+    <div id="center-view-box">
+      <video id="video-feed" autoplay playsinline></video>
+      <canvas id="steam-canvas" style="display: none;"></canvas>
+      <div id="countdown"></div>
+    </div>
+
+    <!-- KAMERANIN HEMEN ALTINDAKİ YAN YANA AKSİYON BUTONLARI -->
+    <div id="post-capture-actions" style="display: none;">
+      <button id="btn-download" class="action-btn">DOWNLOAD PHOTO</button>
+      <button id="btn-restart" class="action-btn">TAKE ANOTHER</button>
+    </div>
+    </div>
+
+    <!-- SAĞ TARAFTAKİ YAZICI VE ANİMASYONLU BAKI ALANI -->
+    <div id="printer-content">
+      <div id="printer-arkaplan"></div>
+      <div id="print-slit"></div>
+      <div id="photo-slot-container">
+        <img id="printed-photo" src="" alt="Photostrip Output" />
+      </div>
+      <div id="printer-hazne"></div>
+    </div>
+
+    <!-- UI Overlay Katmanları -->
+    <div id="flash-overlay"></div>
+    <div id="meme-display-container">
+        <img id="meme-display" src="" alt="Meme Pose" />
+    </div>
+
+    <!-- Arka Planda Görsel Birleştiren Gizli Tuval -->
+    <canvas id="photostrip-canvas" width="1080" height="1350" style="display:none;"></canvas>
+  </div>
+
+  <!-- AŞAMA 3: İNTERAKTİF EKRAN MODAL (IFRAME) -->
+  <div id="interactive-iframe-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 10000; background-color: #000;">
+      <iframe id="interactive-iframe" src="" allow="camera" style="width: 100%; height: 100%; border: none;"></iframe>
+  </div>
+
+  <!-- MediaPipe Hands CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  
+  <script src="script.js?v=20"></script>
+  <script>
+    document.getElementById('btn-open-interactive').addEventListener('click', () => {
+        document.getElementById('interactive-iframe').src = 'interactive.html';
+        document.getElementById('interactive-iframe-modal').style.display = 'block';
+    });
+    
+    // Yandan mesaj dinleyerek kapatma işlemi (iframe'den haber gelirse)
+    window.addEventListener('message', (event) => {
+        if (event.data === 'closeInteractiveModal') {
+            document.getElementById('interactive-iframe-modal').style.display = 'none';
+            document.getElementById('interactive-iframe').src = ''; // Kamerayı durdurmak için src'yi temizle
+        }
+    });
+  </script>
+</body>
+</html>

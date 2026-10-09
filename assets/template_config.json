@@ -1,0 +1,478 @@
+{
+    "you! (1).png": {
+        "slots": [
+            {
+                "cx": 540.0,
+                "cy": 227.0,
+                "width": 350,
+                "height": 290,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 554.0,
+                "width": 350,
+                "height": 290,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 881.0,
+                "width": 350,
+                "height": 290,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (2).png": {
+        "slots": [
+            {
+                "cx": 540.0,
+                "cy": 203.5,
+                "width": 402,
+                "height": 345,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 579.5,
+                "width": 402,
+                "height": 345,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 955.5,
+                "width": 402,
+                "height": 345,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (3).png": {
+        "slots": [
+            {
+                "cx": 540.5,
+                "cy": 204.0,
+                "width": 387,
+                "height": 330,
+                "angle": 0.0
+            },
+            {
+                "cx": 542.5,
+                "cy": 579.0,
+                "width": 387,
+                "height": 334,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.5,
+                "cy": 953.5,
+                "width": 391,
+                "height": 329,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (4).png": {
+        "slots": [
+            {
+                "cx": 540.5,
+                "cy": 227.0,
+                "width": 355,
+                "height": 354,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.5,
+                "cy": 607.5,
+                "width": 355,
+                "height": 355,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.5,
+                "cy": 988.0,
+                "width": 355,
+                "height": 354,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (5).png": {
+        "slots": [
+            {
+                "cx": 539.5,
+                "cy": 199.5,
+                "width": 355,
+                "height": 309,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.5,
+                "cy": 576.5,
+                "width": 355,
+                "height": 309,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.5,
+                "cy": 953.5,
+                "width": 355,
+                "height": 309,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (6).png": {
+        "slots": [
+            {
+                "cx": 539.5,
+                "cy": 243.5,
+                "width": 343,
+                "height": 345,
+                "angle": 0.0
+            },
+            {
+                "cx": 535.5,
+                "cy": 620.5,
+                "width": 335,
+                "height": 345,
+                "angle": 0.0
+            },
+            {
+                "cx": 545.0,
+                "cy": 995.0,
+                "width": 336,
+                "height": 346,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (7).png": {
+        "slots": [
+            {
+                "cx": 548.1,
+                "cy": 176.3,
+                "width": 315.2,
+                "height": 326.4,
+                "angle": -41.4
+            },
+            {
+                "cx": 540.0,
+                "cy": 605.0,
+                "width": 336,
+                "height": 340,
+                "angle": 0.0
+            },
+            {
+                "cx": 538.5,
+                "cy": 987.7,
+                "width": 326.1,
+                "height": 329.6,
+                "angle": 12.8
+            }
+        ]
+    },
+    "you! (8).png": {
+        "slots": [
+            {
+                "cx": 540.0,
+                "cy": 158.5,
+                "width": 394,
+                "height": 253,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.0,
+                "cy": 442.0,
+                "width": 394,
+                "height": 252,
+                "angle": 0.0
+            },
+            {
+                "cx": 541.0,
+                "cy": 725.0,
+                "width": 394,
+                "height": 254,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 1009.5,
+                "width": 394,
+                "height": 255,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (9).png": {
+        "slots": [
+            {
+                "cx": 539.5,
+                "cy": 199.5,
+                "width": 355,
+                "height": 309,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.5,
+                "cy": 576.5,
+                "width": 355,
+                "height": 309,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.5,
+                "cy": 953.5,
+                "width": 355,
+                "height": 309,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (10).png": {
+        "slots": [
+            {
+                "cx": 540.0,
+                "cy": 203.5,
+                "width": 428,
+                "height": 323,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 564.5,
+                "width": 424,
+                "height": 325,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 927.0,
+                "width": 446,
+                "height": 316,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (11).png": {
+        "slots": [
+            {
+                "cx": 540.0,
+                "cy": 235.5,
+                "width": 338,
+                "height": 339,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.5,
+                "cy": 610.5,
+                "width": 339,
+                "height": 341,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 986.0,
+                "width": 338,
+                "height": 340,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (12).png": {
+        "slots": [
+            {
+                "cx": 539.5,
+                "cy": 521.5,
+                "width": 351,
+                "height": 235,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.5,
+                "cy": 797.5,
+                "width": 351,
+                "height": 235,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.5,
+                "cy": 1079.0,
+                "width": 351,
+                "height": 248,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (13).png": {
+        "slots": [
+            {
+                "cx": 540.0,
+                "cy": 249.0,
+                "width": 400,
+                "height": 304,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 582.5,
+                "width": 398,
+                "height": 303,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 919.0,
+                "width": 400,
+                "height": 308,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (14).png": {
+        "slots": [
+            {
+                "cx": 539.5,
+                "cy": 243.5,
+                "width": 347,
+                "height": 349,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.5,
+                "cy": 619.5,
+                "width": 347,
+                "height": 349,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.5,
+                "cy": 996.0,
+                "width": 347,
+                "height": 350,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (15).png": {
+        "slots": [
+            {
+                "cx": 539.5,
+                "cy": 208.5,
+                "width": 407,
+                "height": 289,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 524.5,
+                "width": 400,
+                "height": 309,
+                "angle": 0.0
+            },
+            {
+                "cx": 539.5,
+                "cy": 820.0,
+                "width": 407,
+                "height": 288,
+                "angle": 0.0
+            },
+            {
+                "cx": 540.0,
+                "cy": 1136.5,
+                "width": 400,
+                "height": 309,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (16).png": {
+        "slots": [
+            {
+                "cx": 536.5,
+                "cy": 598.5,
+                "width": 951,
+                "height": 951,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (17).png": {
+        "slots": [
+            {
+                "cx": 534.0,
+                "cy": 576.5,
+                "width": 698,
+                "height": 941,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (18).png": {
+        "slots": [
+            {
+                "cx": 335.5,
+                "cy": 334.5,
+                "width": 385,
+                "height": 541,
+                "angle": 0.0
+            },
+            {
+                "cx": 745.5,
+                "cy": 334.5,
+                "width": 385,
+                "height": 541,
+                "angle": 0.0
+            },
+            {
+                "cx": 335.5,
+                "cy": 900.5,
+                "width": 385,
+                "height": 541,
+                "angle": 0.0
+            },
+            {
+                "cx": 745.5,
+                "cy": 900.5,
+                "width": 385,
+                "height": 541,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (19).png": {
+        "slots": [
+            {
+                "cx": 553.5,
+                "cy": 629.0,
+                "width": 789,
+                "height": 796,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (20).png": {
+        "slots": [
+            {
+                "cx": 540.0,
+                "cy": 554.0,
+                "width": 924,
+                "height": 880,
+                "angle": 0.0
+            }
+        ]
+    },
+    "you! (21).png": {
+        "slots": [
+            {
+                "cx": 550.0,
+                "cy": 673.5,
+                "width": 886,
+                "height": 1227,
+                "angle": 0.0
+            }
+        ]
+    }
+}
